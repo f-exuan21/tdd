@@ -1,5 +1,6 @@
 package io.hhplus.tdd.service;
 
+import io.hhplus.tdd.InsufficientPointException;
 import io.hhplus.tdd.database.PointHistoryTable;
 import io.hhplus.tdd.database.UserPointTable;
 import io.hhplus.tdd.point.PointHistory;
@@ -65,7 +66,7 @@ public class PointService {
         return this.withUserLock(userId, () -> {
             UserPoint current = userPointTable.selectById(userId);
 
-            if (current.point() < amount) throw new IllegalArgumentException("잔고가 부족합니다.");
+            if (current.point() < amount) throw new InsufficientPointException();
 
             long newAmount = current.point() - amount;
 

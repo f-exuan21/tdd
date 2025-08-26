@@ -1,5 +1,6 @@
 package io.hhplus.tdd.point;
 
+import io.hhplus.tdd.InvalidAmountException;
 import io.hhplus.tdd.service.PointService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -63,6 +64,6 @@ public class PointController {
     }
 
     private void validateAmount(long amount) {
-        if (amount <= 0) throw new IllegalArgumentException("amount must be greater than 0");
+        if (amount <= 0) throw new InvalidAmountException(amount);
     }
 }

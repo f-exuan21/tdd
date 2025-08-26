@@ -1,5 +1,6 @@
 package io.hhplus.tdd.service;
 
+import io.hhplus.tdd.InsufficientPointException;
 import io.hhplus.tdd.database.PointHistoryTable;
 import io.hhplus.tdd.database.UserPointTable;
 import io.hhplus.tdd.point.PointHistory;
@@ -162,8 +163,8 @@ class PointServiceTest {
                 .thenReturn(current);
 
         // when
-        IllegalArgumentException ex = assertThrows(
-                IllegalArgumentException.class,
+        InsufficientPointException ex = assertThrows(
+                InsufficientPointException.class,
                 () -> pointService.use(userId, requestPoint)
         );
 
